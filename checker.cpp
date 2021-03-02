@@ -23,22 +23,18 @@ void extreamValueCheck(float Parameter_value, string parameter_name, float lower
 void toConsole(float Parameter_value, string parameter_name)
 {
   cout << parameter_name << "out of range!\n";
+  
   if(parameter_name == "Temperature ")
   {
-    extreamValueCheck(Parameter_value, parameter_name, -10, 150);
+    extreamValueCheck(Parameter_value, parameter_name, -10, 100);
   }
   else if(parameter_name == "State of Charge ")
   {
     extreamValueCheck(Parameter_value, parameter_name, -10, 150);
-  }
-  else if(parameter_name == "Charge Rate ")
-  {
-    extreamValueCheck(Parameter_value, parameter_name, -5, 15);
-  }
-  
+  } 
   else
   {
-      //do nothing
+       extreamValueCheck(Parameter_value, parameter_name, -5, 15);
   }
 }
 
