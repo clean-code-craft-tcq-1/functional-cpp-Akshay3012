@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-bool isBatteryParameterInRange(float Parameter_value, float max, float min)
+bool isBatteryParameterInRange(float Parameter_value, float min, float max)
 {
   if((Parameter_value < min) || (Parameter_value > max))
   {
