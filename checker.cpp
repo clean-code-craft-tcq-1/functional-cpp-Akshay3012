@@ -8,6 +8,10 @@ bool isBatteryParameterInRange(float Parameter_value, float max, float min)
   {
     return false;
   } 
+  else
+  {
+    return true;
+  }
 }
 bool batteryIsOk(float temperature, float soc, float chargeRate) {
     return isBatteryParameterInRange(temperature,0,45) && 
