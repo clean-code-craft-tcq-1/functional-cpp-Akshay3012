@@ -7,7 +7,7 @@ bool isBatteryParameterInRange(float Parameter_value, float min, float max, stri
 {
   if((Parameter_value < min) || (Parameter_value > max))
   {
-    toConsol(f_parameter_name);
+    toConsole(f_parameter_name);
     return false;
   } 
   else
@@ -16,7 +16,7 @@ bool isBatteryParameterInRange(float Parameter_value, float min, float max, stri
   }
 }
 
-void toConsol(String parameter_name)
+void toConsole(string parameter_name)
 {
   cout << parameter_name << "out of range!\n";
 }
