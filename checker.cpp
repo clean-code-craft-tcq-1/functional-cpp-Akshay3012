@@ -1,11 +1,13 @@
 #include <assert.h>
 #include <iostream>
+#include <string>
 using namespace std;
 
-bool isBatteryParameterInRange(float Parameter_value, float min, float max)
+bool isBatteryParameterInRange(float Parameter_value, float min, float max, string f_parameter_name)
 {
   if((Parameter_value < min) || (Parameter_value > max))
   {
+    toConsol(f_parameter_name);
     return false;
   } 
   else
@@ -13,10 +15,16 @@ bool isBatteryParameterInRange(float Parameter_value, float min, float max)
     return true;
   }
 }
+
+void toConsol(String parameter_name)
+{
+  cout << parameter_name << "out of range!\n";
+}
+
 bool batteryIsOk(float temperature, float soc, float chargeRate) {
-    return isBatteryParameterInRange(temperature, 0, 45) && 
-    isBatteryParameterInRange(soc, 20, 80) &&
-    isBatteryParameterInRange(chargeRate,-1,0.8);
+    return isBatteryParameterInRange(temperature, 0, 45, "Temperature") && 
+    isBatteryParameterInRange(soc, 20, 80, "State of Charge") &&
+    isBatteryParameterInRange(chargeRate,-1,0.8,"Charge Rate");
  // if(temperature < 0 || temperature > 45) {
  //   cout << "Temperature out of range!\n";
  //  return false;
