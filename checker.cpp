@@ -3,6 +3,11 @@
 #include <string>
 using namespace std;
 
+void toConsole(string parameter_name)
+{
+  cout << parameter_name << "out of range!\n";
+}
+
 bool isBatteryParameterInRange(float Parameter_value, float min, float max, string f_parameter_name)
 {
   if((Parameter_value < min) || (Parameter_value > max))
@@ -16,10 +21,6 @@ bool isBatteryParameterInRange(float Parameter_value, float min, float max, stri
   }
 }
 
-void toConsole(string parameter_name)
-{
-  cout << parameter_name << "out of range!\n";
-}
 
 bool batteryIsOk(float temperature, float soc, float chargeRate) {
     return isBatteryParameterInRange(temperature, 0, 45, "Temperature") && 
