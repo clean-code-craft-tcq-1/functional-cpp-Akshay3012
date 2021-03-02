@@ -3,16 +3,51 @@
 #include <string>
 using namespace std;
 
-void toConsole(string parameter_name)
+void toConsoleExtreamValue(string parameter_name)
 {
-  cout << parameter_name << "out of range!\n";
+  cout << parameter_name << "is extreamly low or high!\n";
 }
 
-bool isBatteryParameterInRange(float Parameter_value, float min, float max, string f_parameter_name)
+void extreamValueCheck(float Parameter_value, string parameter_name, float lower_limit, float upper_limit)
+{
+ if((Parameter_value < lower_limit)||(Parameter_value > upper_limit))
+  {
+    toConsoleExtreamValue(parameter_name);
+  } 
+  else
+  {
+   //do nothing;
+  }
+}
+  
+void toConsole(float Parameter_value, string parameter_name)
+{
+  cout << parameter_name << "out of range!\n";
+  if(parameter_name == "Temperature ")
+  {
+    extreamValueCheck(Parameter_value, parameter_name, -10, 150);
+  }
+  else if(parameter_name == "State of Charge ")
+  {
+    extreamValueCheck(Parameter_value, parameter_name, -10, 150);
+  }
+  else if(parameter_name == "Charge Rate ")
+  {
+    extreamValueCheck(Parameter_value, parameter_name, -5, 15);
+  }
+  
+  else
+  {
+      //do nothing
+  }
+}
+
+
+bool isBatteryParameterInRange(float Parameter_value, float min, float max, string parameter_name)
 {
   if((Parameter_value < min) || (Parameter_value > max))
   {
-    toConsole(f_parameter_name);
+    toConsole(Parameter_value,parameter_name);
     return false;
   } 
   else
@@ -24,9 +59,9 @@ bool isBatteryParameterInRange(float Parameter_value, float min, float max, stri
 
 bool batteryIsOk(float temperature, float soc, float chargeRate) {
   
-    return isBatteryParameterInRange(temperature, 0, 45, "Temperature") && 
-    isBatteryParameterInRange(soc, 20, 80, "State of Charge") &&
-    isBatteryParameterInRange(chargeRate,-1,0.8,"Charge Rate");
+    return isBatteryParameterInRange(temperature, 0, 45, "Temperature ") && 
+    isBatteryParameterInRange(soc, 20, 80, "State of Charge ") &&
+    isBatteryParameterInRange(chargeRate,-1,0.8,"Charge Rate ");
 }
 
 int main() {
